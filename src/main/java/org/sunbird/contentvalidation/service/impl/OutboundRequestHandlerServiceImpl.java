@@ -117,7 +117,7 @@ public class OutboundRequestHandlerServiceImpl {
 	}
 
 	public Map<String, Object> fetchResultsForImages(String uri, File imageFile, String fileName) {
-		ResponseEntity<Map> responseEntity = null;
+		ResponseEntity<Map> responseEntity = new ResponseEntity<Map>(null);
 		try {
 			HttpHeaders header = new HttpHeaders();
 			header.setContentType(MediaType.MULTIPART_FORM_DATA); // Also tried with multipart...
@@ -145,11 +145,11 @@ public class OutboundRequestHandlerServiceImpl {
 			FormHttpMessageConverter formHttpMessageConverter = new FormHttpMessageConverter();
 			formHttpMessageConverter.addPartConverter(resource);
 
-			RestTemplate restTemplate = new RestTemplate(Arrays.asList(jackson, resource, formHttpMessageConverter));
+			RestTemplate newRestTemplate = new RestTemplate(Arrays.asList(jackson, resource, formHttpMessageConverter));
 
 			log.info("Request --> " + requestEntity);
 
-			responseEntity = restTemplate.postForEntity(uri, requestEntity, Map.class);
+			responseEntity = newRestTemplate.postForEntity(uri, requestEntity, Map.class);
 
 			if (log.isDebugEnabled()) {
 				ObjectMapper mapper = new ObjectMapper();

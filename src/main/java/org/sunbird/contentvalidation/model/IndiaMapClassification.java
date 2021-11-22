@@ -2,7 +2,7 @@ package org.sunbird.contentvalidation.model;
 
 public class IndiaMapClassification {
     private Classification classification;
-    private double percentage_probability;
+    private double percentageProbability;
     private String present;
 
     public Classification getClassification() {
@@ -13,12 +13,12 @@ public class IndiaMapClassification {
         this.classification = classification;
     }
 
-    public double getPercentage_probability() {
-        return percentage_probability;
+    public double getPercentageProbability() {
+        return percentageProbability;
     }
 
-    public void setPercentage_probability(double percentage_probability) {
-        this.percentage_probability = percentage_probability;
+    public void setPercentageProbability(double percentageProbability) {
+        this.percentageProbability = percentageProbability;
     }
 
     public String getPresent() {

@@ -2,5 +2,5 @@ package org.sunbird.contentvalidation.model.contentsearch.model;
 
 public enum SearchStatuses {
 
-    Live,Deleted,Expired,Draft,InReview,Reviewed,Processing, MarkedForDeletion, QualityReview, Unpublished
+    LIVE, DELETED, EXPIRED, DRAFT, IN_REVIEW, REVIEWED, PROCESSING, MARKED_FOR_DELETION, QUALITY_REVIEW, UNPUBLISHED
 }
