@@ -245,7 +245,7 @@ public class ContentValidationServiceImpl implements ContentValidationService {
 					wordCountMap = new HashMap<>();
 				}
 				String profaneWord = profanity.getPossibleProfanityFrequency().get(i).getWord();
-				Integer totalWordCount = (Integer) profanity.getPossibleProfanityFrequency().get(i)
+				Integer totalWordCount =  profanity.getPossibleProfanityFrequency().get(i)
 						.getNoOfOccurrence();
 				if (ObjectUtils.isEmpty(wordCountMap.get(profaneWord))) {
 					wordCount = new ProfanityWordCount();
@@ -386,7 +386,7 @@ public class ContentValidationServiceImpl implements ContentValidationService {
 					}
 					if (!ObjectUtils.isEmpty(imageResponse.getPayload()) && !ObjectUtils.isEmpty(imageResponse.getPayload().getIndiaClassification())) {
 						profanityIndiaMapAnalysis.setImageNo(imageNo);
-						profanityIndiaMapAnalysis.setProbability((float)((double)imageResponse.getPayload().getIndiaClassification().get(0).getPercentageProbability() / 100));
+						profanityIndiaMapAnalysis.setProbability((float)(imageResponse.getPayload().getIndiaClassification().get(0).getPercentageProbability() / 100));
 						profanityIndiaMapAnalysis.setIncorrectPercentage((float)((double)imageResponse.getPayload().getIndiaClassification().get(0).getClassification().getIncorrectPercentage() / 100));
 						profanityIndiaMapAnalysis.setIsIndiaMapDetected(false);
 						if(profanityIndiaMapAnalysis.getIncorrectPercentage() < .50){
@@ -426,7 +426,8 @@ public class ContentValidationServiceImpl implements ContentValidationService {
 		try {
 			log.info(mapper.writeValueAsString(mapper.convertValue(response, Map.class)));
 		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+			log.error(e);
+
 		}
 		return mapper.convertValue(response, Map.class);
 	}
